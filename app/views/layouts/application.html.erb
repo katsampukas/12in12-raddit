@@ -9,6 +9,45 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <header>
+      <div class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <div class="container">
+          <a class="navbar-brand" href="/">Raddit</a>
+          <div class="navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+              <% if !user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to 'Submit Link', new_link_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Account", edit_user_registration_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "nav-link" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="main" class="container">
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <%= yield %>
+
+    </div>
+
   </body>
 </html>
