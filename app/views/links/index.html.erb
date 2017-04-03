@@ -3,7 +3,7 @@
 <% @links.each do |link| %>
   <div class="col">
     <h2><%= link_to link.title, link %></h2>
-    <p>Submitted <%= time_ago_in_words(link.created_at) %> ago by <%= link.user.email %></p>
+    <p>Submitted <%= time_ago_in_words(link.created_at) %> ago by <%= link.user.name %></p>
 
     <%= link_to 'Visit url', link.url, class: "btn btn-primary btn-sm" %>
     <% if link.user == current_user %>
